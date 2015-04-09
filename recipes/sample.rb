@@ -1,3 +1,4 @@
 execute 'echo hello' do
-  chmod "echo 'hello'"
+  user 'vagrant'
+  command "mkdir ~/test_dir"
 end
