@@ -8,6 +8,8 @@ GEM
       hashie
       specinfra (~> 2.1)
       thor
+    itamae-plugin-recipe-rtn_rbenv (0.1.0)
+      itamae (~> 1.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -21,3 +23,4 @@ PLATFORMS
 
 DEPENDENCIES
   itamae (= 1.0.13)
+  itamae-plugin-recipe-rtn_rbenv
