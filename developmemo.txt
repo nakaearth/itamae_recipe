@@ -1,0 +1,2 @@
+bundle exec itamae ssh -j nodes/ruby_dev_env.json -h default --vagrant recipes/ruby_dev_env/ruby_dev_env.rb
+

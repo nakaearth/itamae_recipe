@@ -1,0 +1,9 @@
+{
+  "rtn_rbenv": {
+    "user": "vagrant",
+      "versions": {
+        "2.2.0": ["bundler"]
+      },
+      "global": "2.2.0"
+  }
+}
