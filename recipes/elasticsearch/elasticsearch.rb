@@ -9,7 +9,7 @@ execute 'elasticsearch file get' do
 end
 
 execute 'file unzip' do
-  command 'tar -xf elsticsearch.tar.gz'
+  command 'tar -zxf elasticsearch.tar.gz'
 end
 
 execute 'remove tar' do
