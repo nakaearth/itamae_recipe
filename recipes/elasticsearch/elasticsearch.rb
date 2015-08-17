@@ -20,30 +20,7 @@ execute 'lib move' do
   command 'mv elasticsearch-* elasticsearch'
 end
 
-execute 'move directory' do
-  command 'sudo mv elasticsearch /usr/local/share'
-end
-
-#execute 'remove yum repo file' do
-##  command 'sudo rm /etc/yum.repos.d/elasticsearch.repo'
+#execute 'move directory' do
+#  command 'sudo mv elasticsearch /usr/local/share'
 #end
 
-#execute 'add repo' do
-#  user 'root'
-#  command 'rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch'
-#end
-
-#file "/etc/yum.repos.d/elasticsearch.reop" do
-#  user 'root'
-#  content "[elasticsearch-1.7]
-#name=Elasticsearch repository for 1.7 packages
-#baseurl=http://packages.elasticsearch.org/elasticsearch/1.7/centos
-#gpgcheck=1
-#$gpgkey=http://packages.elasticsearch.org/GPG-KEY-elasticsearch
-#enabled=1"
-#end
-
-#package 'elasticsearch' do
-#  user 'root'
-#  action :install
-#end
