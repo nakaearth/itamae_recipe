@@ -16,8 +16,8 @@ execute 'remove tar' do
   command 'rm elasticsearch.tar.gz'
 end
 
-execute 'rm' do
-  command 'sudo rm -R /usr/local/share/elasticsearch'
+execute 'sudo rm -R /usr/local/share/elasticsearch' do
+   if "test -d /usr/local/share/elaticsearch"
 end
 
 execute 'lib move' do
