@@ -16,11 +16,11 @@ execute 'remove tar' do
   command 'rm elasticsearch.tar.gz'
 end
 
-execute 'lib move' do
-  command 'mv elasticsearch-* elasticsearch'
+execute 'rm' do
+  command 'sudo rm -R /usr/local/share/elasticsearch'
 end
 
-#execute 'move directory' do
-#  command 'sudo mv elasticsearch /usr/local/share'
-#end
+execute 'lib move' do
+  command 'sudo mv elasticsearch-* elasticsearch'
+end
 
