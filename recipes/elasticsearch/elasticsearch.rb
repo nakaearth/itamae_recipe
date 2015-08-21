@@ -12,12 +12,12 @@ execute 'file unzip' do
   command 'tar -zxf elasticsearch.tar.gz'
 end
 
-execute 'remove tar' do
-  command 'rm elasticsearch.tar.gz'
+execute 'rm elasticsearch.tar.gz' do
+  only_if "test -d ~/elaticsearch.tar.gz"
 end
 
 execute 'sudo rm -R /usr/local/share/elasticsearch' do
-   if "test -d /usr/local/share/elaticsearch"
+   only_if "test -d /usr/local/share/elaticsearch"
 end
 
 execute 'lib move' do
