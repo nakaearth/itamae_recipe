@@ -26,7 +26,7 @@ end
 
 template "/usr/local/share/elasticsearch/conf/elasticsearch.yml" do 
   path "/usr/local/share/elasticsearch/conf/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
-  source "../templates/elasticsearch/conf/elasticsearch_yml.erb" #　必須指定。
+  source "../../templates/elasticsearch/conf/elasticsearch_yml.erb" #　必須指定。
   variables({index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
 end
 
