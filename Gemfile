@@ -8,3 +8,6 @@ gem 'winrm'
 
 # レシププラグイン群
 gem 'itamae-plugin-recipe-rtn_rbenv'
+
+# server spec
+gem 'serverspec'
