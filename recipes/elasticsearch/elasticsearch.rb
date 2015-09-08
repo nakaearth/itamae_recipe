@@ -17,7 +17,7 @@ execute 'file unzip' do
 end
 
 execute 'sudo rm -R /usr/local/share/elasticsearch' do
-   only_if "test -d /usr/local/share/elaticsearch"
+   only_if "test -d /usr/local/share/elaticsearch/conf/elasticsearch.yml"
 end
 
 execute 'lib move' do
