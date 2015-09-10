@@ -9,7 +9,7 @@ execute 'elasticsearch file get' do
 end
 
 execute 'rm elasticsearch.tar.gz' do
-  only_if "test -d ~/elaticsearch.tar.gz"
+  only_if "test -e ~/elaticsearch.tar.gz"
 end
 
 execute 'file unzip' do
@@ -17,7 +17,7 @@ execute 'file unzip' do
 end
 
 execute 'sudo rm -R /usr/local/share/elasticsearch' do
-   only_if "test -d /usr/local/share/elaticsearch/conf/elasticsearch.yml"
+   only_if "test -e /usr/local/share/elaticsearch/bin/elasticsearch"
 end
 
 execute 'lib move' do
@@ -26,7 +26,7 @@ end
 
 template "/usr/local/share/elasticsearch/conf/elasticsearch.yml" do 
   path "/usr/local/share/elasticsearch/conf/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
-  source "../../templates/elasticsearch/conf/elasticsearch_yml.erb" #　必須指定。
-  variables({index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
+  source "../../templates/elasticsearch/conf/elasticsearch_yml.erb" #必須指定。
+  variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
 end
 

@@ -1,4 +1,4 @@
-cluster.name: nakamura-elasticsearch
+cluster.name: <%= node['cluster_name'] %>
 
 index.number_of_shards: <%= node['index_shards_num'] %>
 index.number_of_replicas: <%= node['index_replicas_num'] %>
