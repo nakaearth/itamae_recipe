@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'itamae', '1.0.13'
-#gem 'itamae', '1.4.2'
+#gem 'itamae', '1.0.13'
+gem 'itamae', '1.4.2'
 
 # Vagrant依存ファイル
 gem 'winrm'

@@ -1,0 +1,6 @@
+cluster.name: <%= node['elasticsearch']['cluster_name'] %>
+
+index.number_of_shards: <%= node['elasticsearch']['index_shards_num'] %>
+index.number_of_replicas: <%= node['elasticsearch']['index_replicas_num'] %>
+
+network.host: '_eth1:ipv4_'
