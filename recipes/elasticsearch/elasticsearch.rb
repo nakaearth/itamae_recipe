@@ -16,12 +16,12 @@ execute 'file unzip' do
   command 'tar -zxf elasticsearch.tar.gz'
 end
 
-execute 'sudo rm -R /usr/local/share/elasticsearch' do
-  not_if "test -e /usr/local/share/elaticsearch/bin/elasticsearch"
+execute 'sudo mv elasticsearch-* /usr/local/share/elasticsearch' do
+  only_if 'sudo rm -R /usr/local/share/elasticsearch'
 end
 
-execute 'lib move' do
-  command 'sudo mv elasticsearch-* /usr/local/share/elasticsearch'
+execute 'chmmod' do
+  command 'sudo chmod -R 755 /usr/local/share/elasticsearch'
 end
 
 template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do 
@@ -30,3 +30,26 @@ template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do
   variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
 end
 
+execute 'bin/plugin --remove mobz/elasticsearch-head' do
+  cwd '/usr/local/share/elasticsearch'
+end
+
+execute 'bin/plugin -install mobz/elasticsearch-head' do
+  cwd '/usr/local/share/elasticsearch'
+end
+
+execute 'bin/plugin --remove elasticsearch/marvel/latest' do
+  cwd '/usr/local/share/elasticsearch'
+end
+
+execute 'bin/plugin -install elasticsearch/marvel/latest' do
+  cwd '/usr/local/share/elasticsearch'
+end
+
+execute 'bin/plugin --remove elasticsearch/elasticsearch-analysis-kuromoji/2.7.0' do
+  cwd '/usr/local/share/elasticsearch'
+end
+
+execute 'bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/2.7.0' do
+  cwd '/usr/local/share/elasticsearch'
+end
