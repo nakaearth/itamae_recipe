@@ -31,6 +31,7 @@ template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do
 end
 
 execute 'bin/plugin --remove mobz/elasticsearch-head' do
+  only_if 'cd /usr/local/share/elasticsearch/plugins/head'
   cwd '/usr/local/share/elasticsearch'
 end
 
@@ -39,6 +40,7 @@ execute 'bin/plugin -install mobz/elasticsearch-head' do
 end
 
 execute 'bin/plugin --remove elasticsearch/marvel/latest' do
+  only_if 'cd /usr/local/share/elasticsearch/plugins/mavel'
   cwd '/usr/local/share/elasticsearch'
 end
 
@@ -47,6 +49,7 @@ execute 'bin/plugin -install elasticsearch/marvel/latest' do
 end
 
 execute 'bin/plugin --remove elasticsearch/elasticsearch-analysis-kuromoji/2.7.0' do
+  only_if 'cd /usr/local/share/elasticsearch/plugins/analysis-kuromoji'
   cwd '/usr/local/share/elasticsearch'
 end
 
