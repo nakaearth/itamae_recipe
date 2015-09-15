@@ -48,7 +48,7 @@ execute 'bin/plugin -install elasticsearch/marvel/latest' do
   cwd '/usr/local/share/elasticsearch'
 end
 
-execute 'bin/plugin --remove elasticsearch/elasticsearch-analysis-kuromoji/2.7.0' do
+execute "bin/plugin --remove elasticsearch/elasticsearch-analysis-kuromoji/#{node['elasticsearch']['plugin']['kuromoji']['version']}" do
   only_if 'cd /usr/local/share/elasticsearch/plugins/analysis-kuromoji'
   cwd '/usr/local/share/elasticsearch'
 end

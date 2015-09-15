@@ -3,6 +3,11 @@
     "cluster_name": "nakamura-elasticsearch", 
     "version": "1.7.4",
     "index_shards_num": "5", 
-    "index_replicas_num": "1"
+    "index_replicas_num": "1", 
+    "plugin": {
+      "kuromoji": {
+        "version": "2.7.0"
+      }
+    }
   }
 }
