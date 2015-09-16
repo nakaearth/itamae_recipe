@@ -53,6 +53,6 @@ execute "bin/plugin --remove elasticsearch/elasticsearch-analysis-kuromoji/#{nod
   cwd '/usr/local/share/elasticsearch'
 end
 
-execute 'bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/2.7.0' do
+execute "bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/#{node['elasticsearch']['plugin']['kuromoji']['version']}" do
   cwd '/usr/local/share/elasticsearch'
 end
