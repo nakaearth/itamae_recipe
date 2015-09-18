@@ -1,3 +1,23 @@
 bundle exec itamae ssh -j nodes/ruby_dev_env.json -h default --vagrant recipes/ruby_dev_env/ruby_dev_env.rb
 bundle exec itamae ssh -j nodes/ruby_dev_env.json -h el3  recipes/ruby_dev_env/ruby_dev_env.rb
 
+
+curl -XGET http://192.168.25.30:9200/famiphoto/photo/_search?pretty=true -d '{
+  "function_score": {
+    "query":{
+      "match":{"description":"サッカー選手"}}
+    },
+    "boost": "boost for the whole query",
+     "FUNCTION": {
+       "script_score" : {
+         "script" : "_score * doc['my_numeric_field'].value"
+       }
+     },  
+     "boost_mode":"multiply"
+  }
+}'
+
+
+
+
+

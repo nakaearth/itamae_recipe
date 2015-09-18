@@ -1,4 +1,4 @@
-include_recipe 'rtn_rbenv::system'
+include_recipe "rbenv::system"
 
 package 'git rbenv' do
   action :install

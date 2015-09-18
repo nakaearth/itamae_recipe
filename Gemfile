@@ -7,7 +7,7 @@ gem 'itamae', '1.4.2'
 gem 'winrm'
 
 # レシププラグイン群
-gem 'itamae-plugin-recipe-rtn_rbenv'
+gem 'itamae-plugin-recipe-rbenv'
 
 # server spec
 gem 'serverspec'
