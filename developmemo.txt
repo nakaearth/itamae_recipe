@@ -3,7 +3,6 @@ bundle exec itamae ssh -j nodes/ruby_dev_env.json -h el3  recipes/ruby_dev_env/r
 
 
 curl -XGET http://192.168.25.30:9200/famiphoto/photo/_search?pretty=true -d '{
-  "function_score": {
     "query":{
       "match":{"description":"サッカー選手"}}
     },
@@ -14,7 +13,6 @@ curl -XGET http://192.168.25.30:9200/famiphoto/photo/_search?pretty=true -d '{
        }
      },  
      "boost_mode":"multiply"
-  }
 }'
 
 
