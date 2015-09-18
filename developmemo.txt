@@ -9,7 +9,7 @@ curl -XGET http://192.168.25.30:9200/famiphoto/photo/_search?pretty=true -d '{
     "boost": "boost for the whole query",
      "FUNCTION": {
        "script_score" : {
-         "script" : "_score * doc['id'].value"
+         "script" : "_score * doc['my_numeric_field'].value"
        }
      },  
      "boost_mode":"multiply"
