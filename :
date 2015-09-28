@@ -1,4 +1,0 @@
-Script started on Fri Sep 18 09:44:13 2015
-script: _score * doc['my_numeric_field'].value: No such file or directory
-
-Script done on Fri Sep 18 09:44:14 2015
