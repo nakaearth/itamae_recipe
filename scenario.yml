@@ -1,0 +1,14 @@
+- target_group: naka-dev
+  command: hostname
+  itamae:
+    - path: recipes/elasticsearch/elasticsearch.rb
+    - sudo: true
+    - node_json: nodes/elasticsearch.json
+
+---
+naka-dev:
+  target_type: group
+  targets:
+    - el2
+    - el4
+

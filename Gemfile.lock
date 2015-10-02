@@ -46,6 +46,13 @@ GEM
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
     rubyntlm (0.4.0)
+    rundock (0.5.4)
+      ansi
+      net-ssh
+      specinfra (>= 2.31.0, < 3.0.0)
+      thor
+    rundock-plugin-operation-itamae (0.1.4)
+      itamae
     schash (0.1.2)
     serverspec (2.23.1)
       multi_json
@@ -76,6 +83,8 @@ PLATFORMS
 DEPENDENCIES
   itamae (= 1.4.2)
   itamae-plugin-recipe-rbenv
+  rundock
+  rundock-plugin-operation-itamae
   serverspec
   winrm
 
