@@ -15,3 +15,7 @@ gem 'itamae-plugin-recipe-rbenv'
 
 # server spec
 gem 'serverspec'
+
+gem 'pry'
+gem 'pry-doc'
+gem 'pry-byebug'

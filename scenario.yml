@@ -1,14 +1,13 @@
-- target_group: naka-dev
-  command: hostname
+- target: dev-el4
   itamae:
-    - path: recipes/elasticsearch/elasticsearch.rb
-    - sudo: true
+    - recipes/elasticsearch/elasticsearch.rb
     - node_json: nodes/elasticsearch.json
-
+    - log_level: info
 ---
-naka-dev:
-  target_type: group
-  targets:
-    - el2
-    - el4
-
+dev-el4:
+  host: 192.168.25.50
+  ssh_opts:
+    port: 2203
+    user: vagrant
+    key: /usr/local/project/itamae_recip/.vagrant/machines/el3/virtualbox/private_key
+---
