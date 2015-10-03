@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 #gem 'itamae', '1.0.13'
 gem 'itamae', '1.4.2'
 
+# 複数の環境でitamaeを提供する
+gem 'rundock'
+gem 'rundock-plugin-operation-itamae'
+
 # Vagrant依存ファイル
 gem 'winrm'
 
