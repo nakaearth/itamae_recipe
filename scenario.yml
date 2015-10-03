@@ -1,6 +1,6 @@
 - target: dev-el4
   itamae:
-    - recipes/elasticsearch/elasticsearch.rb
+    - /usr/local/project/itame_recipe/recipes/elasticsearch/elasticsearch.rb
     - node_json: nodes/elasticsearch.json
     - log_level: info
 ---
@@ -9,5 +9,5 @@ dev-el4:
   ssh_opts:
     port: 2203
     user: vagrant
-    key: /usr/local/project/itamae_recip/.vagrant/machines/el3/virtualbox/private_key
+    key: /usr/local/project/itamae_recipe/.vagrant/machines/el4/virtualbox/private_key
 ---
