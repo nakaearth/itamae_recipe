@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 #gem 'itamae', '1.0.13'
-gem 'itamae', '1.4.2'
+# gem 'itamae', '1.4.2'
+gem 'itamae', '~> 1.5'
 
 # 複数の環境でitamaeを提供する
 gem 'rundock'

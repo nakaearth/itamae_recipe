@@ -15,7 +15,7 @@ GEM
       builder (>= 2.1.2)
     hashie (3.4.2)
     httpclient (2.6.0.1)
-    itamae (1.4.2)
+    itamae (1.6.0)
       ansi
       hashie
       schash (~> 0.1.0)
@@ -76,7 +76,7 @@ GEM
       specinfra (~> 2.43)
     sfl (2.2)
     slop (3.6.0)
-    specinfra (2.43.10)
+    specinfra (2.43.11)
       net-scp
       net-ssh (~> 2.7)
       net-telnet
@@ -98,7 +98,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  itamae (= 1.4.2)
+  itamae (~> 1.5)
   itamae-plugin-recipe-rbenv
   pry
   pry-byebug

@@ -16,12 +16,16 @@ execute 'file unzip' do
   command 'tar -zxf elasticsearch.tar.gz'
 end
 
-execute 'sudo mv elasticsearch-* /usr/local/share/elasticsearch' do
-  only_if 'sudo rm -R /usr/local/share/elasticsearch'
+execute 'sudo rm -R /usr/local/share/elasticsearch' do
+  only_if 'ls /usr/local/share/elasticsearch'
 end
 
-execute 'chmmod' do
-  command 'sudo chmod -R 755 /usr/local/share/elasticsearch'
+execute 'sudo mv elasticsearch-* /usr/local/share/elasticsearch' do
+  not_if 'ls /usr/local/share/elasticsearch'
+end
+
+execute 'sudo chmod -R 755 /usr/local/share/elasticsearch' do
+  only_if 'ls /usr/local/share/elasticsearch'
 end
 
 template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do 
