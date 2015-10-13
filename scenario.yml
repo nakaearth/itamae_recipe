@@ -1,6 +1,10 @@
 - target: dev-el4
   itamae:
     - recipes/redis/redis.rb
+    - node_json: nodes/redis.json
+    - log_level: info
+    - sudo: true
+  itamae:
     - recipes/elasticsearch/elasticsearch.rb
     - node_json: nodes/elasticsearch.json
     - log_level: info
