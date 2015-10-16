@@ -1,6 +1,6 @@
 - target: dev-el4
   itamae:
-    - recipes/redis_elasticsearch.rb
+    - cookbooks/redis_elasticsearch.rb
     - node_json: nodes/redis_elasticsearch.json
     - log_level: info
     - sudo: true
