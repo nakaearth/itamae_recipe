@@ -4,12 +4,24 @@
     - node_json: nodes/redis_elasticsearch.json
     - log_level: info
     - sudo: true
+- target: dev-el2
+  itamae:
+    - recips/redis/redis.rb
+    - node_json: nodes/redis.json
+    - log_level: info
+    - sudo: true
 ---
 dev-el4:
-  #host: 192.168.25.50
   host: 127.0.0.1
   ssh_opts:
     port: 2200
     user: vagrant
     key: /usr/local/project/itamae_recipe/.vagrant/machines/el4/virtualbox/private_key
+---
+dev-el2:
+  host: 127.0.0.1
+  ssh_opts:
+    port: 2201
+    user: vagrant
+    key: /usr/local/project/itamae_recipe/.vagrant/machines/el2/virtualbox/private_key
 ---
