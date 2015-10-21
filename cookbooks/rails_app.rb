@@ -5,7 +5,7 @@
 end
 
 directory "#{node[:git][:app_path]}" do
-  mode "775"
+  action :create
 end
 
 git "#{node[:git][:app_path]}" do
