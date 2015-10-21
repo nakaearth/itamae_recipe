@@ -1,6 +1,6 @@
 {
   "git": {
     "repository": "git@github.com:nakaearth/famiphotos.git", 
-    "app_path": "~/famiphoto"
+    "app_path": "~/rails_app"
     }
 }

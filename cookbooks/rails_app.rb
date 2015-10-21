@@ -4,10 +4,10 @@
   end
 end
 
-execute "mkdir #{node[:git][:app_path]}" do
-  not_if "ls #{node[:git][:app_path] }"
+directory "#{node[:git][:app_path]}" do
+  mode "775"
 end
 
-execute "git clone  #{node[:git][:repository]} #{node[:git][:app_path]}" do
-  only_if "git -h"
+git "#{node[:git][:app_path]}" do
+  repository "#{node[:git][:repository]}"
 end
