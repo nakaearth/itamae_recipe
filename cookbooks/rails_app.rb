@@ -9,5 +9,5 @@ directory "#{node[:git][:app_path]}" do
 end
 
 git "#{node[:git][:app_path]}" do
-  repository "#{node[:git][:repository]}"
+  repository "https://#{node[:git][:git_user]}:#{node[:git][:git_password]}@github.com/#{node[:git][:repository]}.git"
 end

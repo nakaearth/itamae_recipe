@@ -1,6 +1,8 @@
 {
   "git": {
-    "repository": "git@github.com:nakaearth/famiphotos.git", 
-    "app_path": "~/rails_app"
+    "git_user": "#{ENV['git_user']}", 
+    "git_password": "#{ENV['git_password']}",
+    "repository": "nakaearth/famiphotos", 
+    "app_path": "/user/local/project/rails_app"
     }
 }
