@@ -1,9 +1,7 @@
 {
-  "rtn_rbenv": {
-    "user": "vagrant",
-      "versions": {
-        "2.2.0": ["bundler"]
-      },
-      "global": "2.2.0"
+  "rbenv": {
+    "versions": ["2.2.1", "2.2.2"],
+    "global": "2.2.2",
+    "gems": ["bundler"]
   }
 }
