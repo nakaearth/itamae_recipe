@@ -4,6 +4,12 @@
   end
 end
 
+# rubyをinstall
+include_recipe '../recipes/ruby_dev_env/ruby_dev_env.rb'
+# railsのinstall
+
+
+# アプリケーションの配置場所を作成
 directory "#{node[:git][:app_path]}" do
   action :create
 end
