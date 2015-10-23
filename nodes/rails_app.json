@@ -1,4 +1,9 @@
 {
+  "rbenv": {
+    "versions": ["2.2.1", "2.2.2"],
+    "global": "2.2.2",
+    "gems": ["bundler"]
+  },
   "git": {
     "git_user": "#{ENV['git_user']}", 
     "git_password": "#{ENV['git_password']}",

@@ -6,8 +6,12 @@ end
 
 # rubyをinstall
 include_recipe '../recipes/ruby_dev_env/ruby_dev_env.rb'
-# railsのinstall
 
+# railsのinstall
+execute 'install rails' do
+  command 'gem install rails'
+  only_if 'ruby -v'
+end
 
 # アプリケーションの配置場所を作成
 directory "#{node[:git][:app_path]}" do
