@@ -10,7 +10,6 @@ include_recipe '../recipes/ruby_dev_env/ruby_dev_env.rb'
 # railsのinstall
 execute 'install rails' do
   command 'gem install rails'
-  only_if 'ruby -v'
 end
 
 # アプリケーションの配置場所を作成
