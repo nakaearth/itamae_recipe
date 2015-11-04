@@ -1,0 +1,7 @@
+{
+  "rbenv": {
+    "versions": ["2.2.1", "2.2.2"],
+    "global": "2.2.2",
+    "gems": ["bundler", "fluentd"]
+  }
+}
