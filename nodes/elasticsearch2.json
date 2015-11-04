@@ -1,0 +1,9 @@
+{
+  "elasticsearch": {
+    "cluster_name": "nakamura-elasticsearch", 
+    "version": "2.0.0",
+    "index_shards_num": "5", 
+    "index_replicas_num": "1", 
+    }
+  }
+}
