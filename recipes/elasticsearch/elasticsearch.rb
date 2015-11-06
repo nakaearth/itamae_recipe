@@ -11,31 +11,39 @@ end
 
 if  /\A1.*/ =~ node[:elasticsearch][:version]
   execute 'elasticsearch file get' do
-    command 'wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.0.tar.gz -O elasticsearch.tar.gz'
+    command "wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-#{node[:elasticsearch][:version]}.tar.gz -O elasticsearch.tar.gz"
   end
-
-  execute 'file unzip' do
-    command 'tar -zxf elasticsearch.tar.gz'
+else
+  execute 'elasticsearch file get' do
+    command "wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/#{node[:elasticsearch][:version]}/elasticsearch-#{node[:elasticsearch][:version]}.tar.gz -O elasticsearch.tar.gz"
   end
+end
 
-  execute 'sudo rm -R /usr/local/share/elasticsearch' do
-    only_if 'ls /usr/local/share/elasticsearch'
-  end
+execute 'file unzip' do
+  command 'tar -zxf elasticsearch.tar.gz'
+end
 
-  execute 'sudo mv elasticsearch-* /usr/local/share/elasticsearch' do
-    not_if 'ls /usr/local/share/elasticsearch'
-  end
+execute 'sudo rm -R /usr/local/share/elasticsearch' do
+  only_if 'ls /usr/local/share/elasticsearch'
+end
 
-  execute 'sudo chmod -R 755 /usr/local/share/elasticsearch' do
-    only_if 'ls /usr/local/share/elasticsearch'
-  end
+execute 'sudo mv elasticsearch-* /usr/local/share/elasticsearch' do
+  not_if 'ls /usr/local/share/elasticsearch'
+end
 
+execute 'sudo chmod -R 755 /usr/local/share/elasticsearch' do
+  only_if 'ls /usr/local/share/elasticsearch'
+end
+
+# elasticsearch.ymlをコピー
+if  /\A1.*/ =~ node[:elasticsearch][:version]
   template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do 
     path "/usr/local/share/elasticsearch/config/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
     source "../../templates/elasticsearch/config/elasticsearch_yml.erb" #必須指定。
     variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
   end
 
+  # プラグイン
   execute 'bin/plugin --remove mobz/elasticsearch-head' do
     only_if 'cd /usr/local/share/elasticsearch/plugins/head'
     cwd '/usr/local/share/elasticsearch'
@@ -61,9 +69,5 @@ if  /\A1.*/ =~ node[:elasticsearch][:version]
 
   execute "bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/#{node['elasticsearch']['plugin']['kuromoji']['version']}" do
     cwd '/usr/local/share/elasticsearch'
-  end
-else
-  execute 'elasticsearch file get' do
-    command 'wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.0.0/elasticsearch-2.0.0.tar.gz -O elasticsearch.tar.gz'
   end
 end
