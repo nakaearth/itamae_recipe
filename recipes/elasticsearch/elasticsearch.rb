@@ -97,6 +97,35 @@ else
     cwd '/usr/local/share/elasticsearch'
   end
 
+  # mavel
+   execute "bin/plugin remove license" do
+    only_if 'cd /usr/local/share/elasticsearch/plugins/license'
+    cwd '/usr/local/share/elasticsearch'
+  end
+
+  execute "bin/plugin install license" do
+    cwd '/usr/local/share/elasticsearch'
+  end
+
+  execute "bin/plugin remove marvel-agent" do
+    only_if 'cd /usr/local/share/elasticsearch/plugins/marvel-agent'
+    cwd '/usr/local/share/elasticsearch'
+  end
+
+  execute "bin/plugin install marvel-agent" do
+    cwd '/usr/local/share/elasticsearch'
+  end
+
+  execute "bin/plugin remove elasticsearch/marvel/latest" do
+    only_if 'cd /usr/local/share/elasticsearch/plugins/elasticsearch/marvel/latest'
+    cwd '/usr/local/share/elasticsearch'
+  end
+
+#  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
+#    cwd '/usr/local/share/elasticsearch'
+#  end
+
+  # elasticsearch.yml
   template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do 
     path "/usr/local/share/elasticsearch/config/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
     source "../../templates/elasticsearch/config/elasticsearch2_yml.erb" #必須指定。
@@ -106,4 +135,8 @@ else
   execute "bin/elasticsearch -d" do
     cwd '/usr/local/share/elasticsearch'
   end
+
+  #execute "bin/kibana" do
+  #  cwd '/usr/local/share/elasticsearch'
+  #end
 end
