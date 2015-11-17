@@ -35,6 +35,10 @@ execute 'sudo chmod -R 755 /usr/local/share/elasticsearch' do
   only_if 'ls /usr/local/share/elasticsearch'
 end
 
+execute 'mkdir /usr/local/share/elasticsearch/plugins' do
+  not_if 'ls /usr/local/share/elasticsearch/plugins'
+end
+
 # elasticsearch.ymlをコピー
 if  /\A1.*/ =~ node[:elasticsearch][:version]
   template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do 
@@ -71,9 +75,34 @@ if  /\A1.*/ =~ node[:elasticsearch][:version]
     cwd '/usr/local/share/elasticsearch'
   end
 else
+  # kibana setting
   execute "sudo chmod -R 777 /usr/local/share/elasticsearch" do
     only_if 'cd /usr/local/share/elasticsearch/'
     cwd '/usr/local/share/elasticsearch'
+  end
+
+  execute 'rm kibanah.tar.gz' do
+    only_if "test -e ~/kibana.tar.gz"
+  end
+
+  execute 'kibana file get' do
+    command "wget https://download.elastic.co/kibana/kibana/kibana-4.2.1-linux-x64.tar.gz -O kibana.tar.gz"
+  end
+
+  execute 'file unzip' do
+    command 'tar -zxf kibana.tar.gz'
+  end
+
+  execute 'sudo rm -R /usr/local/share/kibana' do
+    only_if 'ls /usr/local/share/kibana'
+  end
+
+  execute 'sudo mv kibana-* /usr/local/share/kibana' do
+    not_if 'ls /usr/local/share/kibana'
+  end
+
+  execute 'sudo chmod -R 777 /usr/local/share/kibana' do
+    only_if 'ls /usr/local/share/kibana'
   end
 
   # プラグイン
@@ -121,9 +150,9 @@ else
     cwd '/usr/local/share/elasticsearch'
   end
 
-#  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
-#    cwd '/usr/local/share/elasticsearch'
-#  end
+  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
+    cwd '/usr/local/share/kibana'
+  end
 
   # elasticsearch.yml
   template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do 
@@ -136,7 +165,7 @@ else
     cwd '/usr/local/share/elasticsearch'
   end
 
-  #execute "bin/kibana" do
-  #  cwd '/usr/local/share/elasticsearch'
-  #end
+  execute "bin/kibana" do
+    cwd '/usr/local/share/kibana'
+  end
 end
