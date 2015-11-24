@@ -150,9 +150,10 @@ else
     cwd '/usr/local/share/elasticsearch'
   end
 
-  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
-    cwd '/usr/local/share/kibana'
-  end
+  # TODO: ここまだうまくいってないので、コメントアウト
+#  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
+#    cwd '/usr/local/share/kibana'
+#  end
 
   # elasticsearch.yml
   template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do 
