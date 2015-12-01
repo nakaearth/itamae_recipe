@@ -12,6 +12,9 @@ execute 'install rails' do
   command 'gem install rails'
 end
 
+# mysqlをinstall
+include_recipe '../recips/mysql/mysql.rb'
+
 # アプリケーションの配置場所を作成
 directory "#{node[:git][:app_path]}" do
   action :create
