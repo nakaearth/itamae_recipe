@@ -13,7 +13,7 @@ execute 'install rails' do
 end
 
 # mysqlをinstall
-include_recipe '../recips/mysql/mysql.rb'
+include_recipe '../recipes/mysql/mysql.rb'
 
 # アプリケーションの配置場所を作成
 directory "#{node[:git][:app_path]}" do

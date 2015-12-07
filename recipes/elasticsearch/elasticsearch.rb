@@ -41,7 +41,7 @@ end
 
 # elasticsearch.ymlをコピー
 if  /\A1.*/ =~ node[:elasticsearch][:version]
-  template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do 
+  template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do
     path "/usr/local/share/elasticsearch/config/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
     source "../../templates/elasticsearch/config/elasticsearch_yml.erb" #必須指定。
     variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
@@ -150,13 +150,12 @@ else
     cwd '/usr/local/share/elasticsearch'
   end
 
-  # TODO: ここまだうまくいってないので、コメントアウト
-#  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
-#    cwd '/usr/local/share/kibana'
-#  end
+  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
+    cwd '/usr/local/share/kibana'
+  end
 
   # elasticsearch.yml
-  template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do 
+  template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do
     path "/usr/local/share/elasticsearch/config/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
     source "../../templates/elasticsearch/config/elasticsearch2_yml.erb" #必須指定。
     variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
