@@ -145,15 +145,27 @@ else
     cwd '/usr/local/share/elasticsearch'
   end
 
-  execute "bin/plugin remove elasticsearch/marvel/latest" do
-    only_if 'cd /usr/local/share/elasticsearch/plugins/elasticsearch/marvel/latest'
+  # marvel plugin
+  execute 'rm kibana.tar.gz' do
+    only_if "test -e ~/kibana.tar.gz"
+  end
+
+  execute 'kibana wget' do
+    command "wget https://download.elastic.co/elasticsearch/marvel/marvel-latest.tar.gz"
+  end
+
+  execute 'file unzip' do
+  command 'tar -zxf marvel-latest.tar.gz'
+end
+
+  execute "bin/plugin install elasticsearch/kibana" do
     cwd '/usr/local/share/elasticsearch'
   end
 
-  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
-    cwd '/usr/local/share/kibana'
-  end
-
+#  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
+#    cwd '/usr/local/share/kibana'
+#  end
+#
   # elasticsearch.yml
   template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do
     path "/usr/local/share/elasticsearch/config/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
