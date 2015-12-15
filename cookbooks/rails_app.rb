@@ -5,15 +5,14 @@
 end
 
 # rubyをinstall
-include_recipe '../recipes/ruby_dev_env/ruby_dev_env.rb'
-
-# railsのinstall
-execute 'install rails' do
-  command 'gem install rails'
-end
+include_recipe "rbenv::user"
+# include_recipe '../recipes/ruby_dev_env/ruby_dev_env.rb'
 
 # mysqlをinstall
 include_recipe '../recipes/mysql/mysql.rb'
+
+# elasticsearchのinstall
+include_recipe '../recipes/elasticsearch/elasticsearch.rb'
 
 # アプリケーションの配置場所を作成
 directory "#{node[:git][:app_path]}" do
