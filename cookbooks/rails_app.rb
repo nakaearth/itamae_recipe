@@ -6,7 +6,6 @@ end
 
 # rubyをinstall
 include_recipe "rbenv::user"
-# include_recipe '../recipes/ruby_dev_env/ruby_dev_env.rb'
 
 # mysqlをinstall
 include_recipe '../recipes/mysql/mysql.rb'
