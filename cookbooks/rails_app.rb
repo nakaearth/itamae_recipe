@@ -1,4 +1,4 @@
-%w( yum wget git ).each do |pkg|
+%w( yum java-1.8.0-openjdk wget git ).each do |pkg|
   package pkg do
     action :install
   end
