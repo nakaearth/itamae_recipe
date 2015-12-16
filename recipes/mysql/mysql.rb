@@ -6,6 +6,6 @@ package 'http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm'
   package pkg
 end
 
-service 'mysqld' do
-  action :start
-end
+#service 'mysqld' do
+#  action :start
+#end

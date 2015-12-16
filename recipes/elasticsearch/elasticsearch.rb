@@ -155,11 +155,7 @@ else
   end
 
   execute 'file unzip' do
-  command 'tar -zxf marvel-latest.tar.gz'
-end
-
-  execute "bin/plugin install elasticsearch/kibana" do
-    cwd '/usr/local/share/elasticsearch'
+    command 'tar -zxf marvel-latest.tar.gz'
   end
 
 #  execute "bin/kibana plugin --install elasticsearch/marvel/latest" do
@@ -177,7 +173,7 @@ end
     cwd '/usr/local/share/elasticsearch'
   end
 
-  execute "bin/kibana" do
-    cwd '/usr/local/share/kibana'
-  end
+ # execute "bin/kibana" do
+ #   cwd '/usr/local/share/kibana'
+ # end
 end
