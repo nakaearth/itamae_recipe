@@ -3,10 +3,6 @@ source 'https://rubygems.org'
 #gem 'itamae', '~> 1.5'
 gem 'itamae'
 
-# 複数の環境でitamaeを提供する
-gem 'rundock'
-gem 'rundock-plugin-operation-itamae'
-
 # Vagrant依存ファイル
 gem 'winrm'
 
@@ -19,7 +15,3 @@ gem 'itamae-plugin-recipe-rbenv'
 
 # server spec
 gem 'serverspec'
-
-gem 'pry'
-gem 'pry-doc'
-gem 'pry-byebug'

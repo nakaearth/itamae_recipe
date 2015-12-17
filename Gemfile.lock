@@ -3,8 +3,6 @@ GEM
   specs:
     ansi (1.5.0)
     builder (3.2.2)
-    byebug (8.2.1)
-    coderay (1.1.0)
     diff-lcs (1.2.5)
     ffi (1.9.10)
     gssapi (1.2.0)
@@ -25,23 +23,12 @@ GEM
     logging (2.0.0)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
-    method_source (0.8.2)
     multi_json (1.11.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
     net-telnet (0.1.1)
     nori (2.6.0)
-    pry (0.10.3)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    pry-byebug (3.3.0)
-      byebug (~> 8.0)
-      pry (~> 0.10)
-    pry-doc (0.8.0)
-      pry (~> 0.9)
-      yard (~> 0.8)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -73,7 +60,6 @@ GEM
       rspec-its
       specinfra (~> 2.46)
     sfl (2.2)
-    slop (3.6.0)
     specinfra (2.46.0)
       net-scp
       net-ssh (>= 2.7, < 3.1)
@@ -90,7 +76,6 @@ GEM
       nori (~> 2.0)
       rubyntlm (~> 0.4.0)
       uuidtools (~> 2.1.2)
-    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -98,9 +83,6 @@ PLATFORMS
 DEPENDENCIES
   itamae
   itamae-plugin-recipe-rbenv
-  pry
-  pry-byebug
-  pry-doc
   rundock
   rundock-plugin-operation-itamae
   serverspec
