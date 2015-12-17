@@ -8,7 +8,6 @@ execute 'rm elasticsearch.tar.gz' do
   only_if "test -e ~/elaticsearch.tar.gz"
 end
 
-
 execute 'elasticsearch file get' do
   command "wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/#{node[:elasticsearch][:version]}/elasticsearch-#{node[:elasticsearch][:version]}.tar.gz -O elasticsearch.tar.gz"
 end
@@ -33,35 +32,9 @@ execute 'mkdir /usr/local/share/elasticsearch/plugins' do
   not_if 'ls /usr/local/share/elasticsearch/plugins'
 end
 
-# elasticsearch.ymlをコピー
-# kibana setting
 execute "sudo chmod -R 777 /usr/local/share/elasticsearch" do
   only_if 'cd /usr/local/share/elasticsearch/'
   cwd '/usr/local/share/elasticsearch'
-end
-
-execute 'rm kibanah.tar.gz' do
-  only_if "test -e ~/kibana.tar.gz"
-end
-
-execute 'kibana file get' do
-  command "wget https://download.elastic.co/kibana/kibana/kibana-4.2.1-linux-x64.tar.gz -O kibana.tar.gz"
-end
-
-execute 'file unzip' do
-  command 'tar -zxf kibana.tar.gz'
-end
-
-execute 'sudo rm -R /usr/local/share/kibana' do
-  only_if 'ls /usr/local/share/kibana'
-end
-
-execute 'sudo mv kibana-* /usr/local/share/kibana' do
-  not_if 'ls /usr/local/share/kibana'
-end
-
-execute 'sudo chmod -R 777 /usr/local/share/kibana' do
-  only_if 'ls /usr/local/share/kibana'
 end
 
 # プラグイン
@@ -120,7 +93,7 @@ end
 # elasticsearch.yml
 template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do
   path "/usr/local/share/elasticsearch/config/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
-  source "../../templates/elasticsearch/config/elasticsearch2_yml.erb" #必須指定。
+  source "../../../templates/elasticsearch/config/elasticsearch2_yml.erb" #必須指定。
   variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
 end
 

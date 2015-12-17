@@ -8,7 +8,6 @@ execute 'rm elasticsearch.tar.gz' do
   only_if "test -e ~/elaticsearch.tar.gz"
 end
 
-
 execute 'elasticsearch file get' do
   command "wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-#{node[:elasticsearch][:version]}.tar.gz -O elasticsearch.tar.gz"
 end
@@ -36,7 +35,7 @@ end
 # elasticsearch.ymlをコピー
 template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do
   path "/usr/local/share/elasticsearch/config/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
-  source "../../templates/elasticsearch/config/elasticsearch_yml.erb" #必須指定。
+  source "../../../templates/elasticsearch/config/elasticsearch_yml.erb" #必須指定。
   variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
 end
 
