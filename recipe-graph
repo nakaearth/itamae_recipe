@@ -1,0 +1,14 @@
+digraph recipes {
+  rankdir=LR;
+  "/usr/local/project/itamae_recipe/cookbooks/rails_app.rb" -> "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/user.rb";
+  "/usr/local/project/itamae_recipe/cookbooks/rails_app.rb" -> "/usr/local/project/itamae_recipe/recipes/mysql/mysql.rb";
+  "/usr/local/project/itamae_recipe/cookbooks/rails_app.rb" -> "/usr/local/project/itamae_recipe/recipes/elasticsearch/elasticsearch.rb";
+  "/usr/local/project/itamae_recipe/cookbooks/rails_app.rb" -> "/usr/local/project/itamae_recipe/recipes/redis/redis.rb";
+  "/usr/local/project/itamae_recipe/cookbooks/rails_app.rb" -> "/usr/local/project/itamae_recipe/recipes/git/git.rb";
+  "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/user.rb" -> "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/install.rb";
+  "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/install.rb" -> "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/dependency.rb";
+  "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/install.rb" -> "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/install.rb";
+  "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/install.rb" -> "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/install.rb";
+  "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/install.rb" -> "/usr/local/project/itamae_recipe/vendor/bundle/ruby/2.2.0/gems/itamae-plugin-recipe-rbenv-0.4.1/lib/itamae/plugin/recipe/rbenv/install.rb";
+  "/usr/local/project/itamae_recipe/recipes/elasticsearch/elasticsearch.rb" -> "/usr/local/project/itamae_recipe/recipes/elasticsearch/version/2_x.rb";
+}

@@ -32,10 +32,10 @@ execute 'mkdir /usr/local/share/elasticsearch/plugins' do
   not_if 'ls /usr/local/share/elasticsearch/plugins'
 end
 
-execute "sudo chmod -R 777 /usr/local/share/elasticsearch" do
-  only_if 'cd /usr/local/share/elasticsearch/'
-  cwd '/usr/local/share/elasticsearch'
-end
+#execute "sudo chmod -R 777 /usr/local/share/elasticsearch" do
+#  only_if 'cd /usr/local/share/elasticsearch/'
+#  cwd '/usr/local/share/elasticsearch'
+#end
 
 # プラグイン
 ## HEAD
@@ -97,6 +97,6 @@ template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do
   variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
 end
 
-execute "bin/elasticsearch -d" do
-  cwd '/usr/local/share/elasticsearch'
-end
+#execute "bin/elasticsearch -d" do
+#  cwd '/usr/local/share/elasticsearch'
+#end
