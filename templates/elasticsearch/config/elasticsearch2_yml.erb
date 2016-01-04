@@ -8,3 +8,8 @@ index.number_of_replicas: <%= node['elasticsearch']['index_replicas_num'] %>
 
 network.host: '_eth1:ipv4_'
 http.port: 9200
+
+################################## Custom ################################
+# Using kuromoji in default
+index.analysis.analyzer.default.type: custom
+index.analysis.analyzer.default.tokenizer: kuromoji_tokenizer
