@@ -12,8 +12,22 @@ execute 'elasticsearch file get' do
   command "wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/#{node[:elasticsearch][:version]}/elasticsearch-#{node[:elasticsearch][:version]}.tar.gz -O elasticsearch.tar.gz"
 end
 
+execute 'rm kibana.tar.gz' do
+  only_if "test -e ~/kibana.tar.gz"
+end
+
+# kibana
+execute 'kibana.tar.gz' do
+  command "wget https://download.elastic.co/kibana/kibana/kibana-4.3.1-darwin-x64.tar.gz -O kibana.tar.gz"
+end
+
 execute 'file unzip' do
   command 'tar -zxf elasticsearch.tar.gz'
+end
+
+# kibana
+execute 'kinaba unzip' do
+  command 'tar -zxvf kibana.tar.gz'
 end
 
 execute 'sudo rm -R /usr/local/share/elasticsearch' do
@@ -24,18 +38,27 @@ execute 'sudo mv elasticsearch-* /usr/local/share/elasticsearch' do
   not_if 'ls /usr/local/share/elasticsearch'
 end
 
-execute 'sudo chmod -R 755 /usr/local/share/elasticsearch' do
+# kibana
+execute 'sudo rm -R /usr/local/share/kibana' do
+  only_if 'ls /usr/local/share/kibana'
+end
+
+execute 'sudo mv kibana-* /usr/local/share/kibana' do
+  not_if 'ls /usr/local/share/kibana'
+end
+
+execute 'sudo chmod -R 775 /usr/local/share/elasticsearch' do
   only_if 'ls /usr/local/share/elasticsearch'
+end
+
+# kibana
+execute 'sudo chmod -R 775 /usr/local/share/kibana' do
+  only_if 'ls /usr/local/share/kibana'
 end
 
 execute 'mkdir /usr/local/share/elasticsearch/plugins' do
   not_if 'ls /usr/local/share/elasticsearch/plugins'
 end
-
-#execute "sudo chmod -R 777 /usr/local/share/elasticsearch" do
-#  only_if 'cd /usr/local/share/elasticsearch/'
-#  cwd '/usr/local/share/elasticsearch'
-#end
 
 # プラグイン
 ## HEAD
@@ -78,16 +101,8 @@ execute "bin/plugin install marvel-agent" do
 end
 
 # marvel plugin
-execute 'rm kibana.tar.gz' do
-  only_if "test -e ~/kibana.tar.gz"
-end
-
-execute 'kibana wget' do
-  command "wget https://download.elastic.co/elasticsearch/marvel/marvel-latest.tar.gz"
-end
-
-execute 'file unzip' do
-  command 'tar -zxf marvel-latest.tar.gz'
+execute './bin/kibana plugin -i elasticsearch/marvel-ui/latest' do
+  cwd '/usr/local/share/kibana'
 end
 
 # elasticsearch.yml
