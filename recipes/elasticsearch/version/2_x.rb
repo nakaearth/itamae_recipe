@@ -47,12 +47,12 @@ execute 'mv kibana-* kibana' do
   not_if 'ls kibana'
 end
 
-execute 'chmod -R 775 elasticsearch' do
+execute 'chmod -R 777 elasticsearch' do
   only_if 'ls elasticsearch'
 end
 
 # kibana
-execute 'chmod -R 775 kibana' do
+execute 'chmod -R 777 kibana' do
   only_if 'ls kibana'
 end
 
@@ -112,6 +112,6 @@ template "elasticsearch/config/elasticsearch.yml" do
   variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
 end
 
-execute "bin/elasticsearch -d" do
+execute "bin/elasticsearch -d &" do
   cwd 'elasticsearch'
 end
