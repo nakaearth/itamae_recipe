@@ -31,7 +31,7 @@ execute 'kinaba unzip' do
 end
 
 execute 'rm -R elasticsearch' do
-  only_if 'ls /usr/local/share/elasticsearch'
+  only_if 'ls elasticsearch'
 end
 
 execute 'mv elasticsearch-* elasticsearch' do
@@ -113,5 +113,5 @@ template "elasticsearch/config/elasticsearch.yml" do
 end
 
 execute "bin/elasticsearch -d" do
-  cwd '/usr/local/share/elasticsearch'
+  cwd 'elasticsearch'
 end

@@ -3,6 +3,7 @@
     "cluster_name": "nakamura-elasticsearch",
     "version": "2.1.0",
     "index_shards_num": "5",
-    "index_replicas_num": "1"
+    "index_replicas_num": "1",
+    "network_host": "_eth1:ipv4_"
   }
 }
