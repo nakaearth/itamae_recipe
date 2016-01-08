@@ -5,80 +5,58 @@
 end
 
 execute 'rm elasticsearch.tar.gz' do
-  only_if "test -e ~/elaticsearch.tar.gz"
+  only_if "test -e #{node[:elasticsearch][:install_path]}elaticsearch.tar.gz"
 end
 
 execute 'elasticsearch file get' do
   command "wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/#{node[:elasticsearch][:version]}/elasticsearch-#{node[:elasticsearch][:version]}.tar.gz -O elasticsearch.tar.gz"
-end
-
-execute 'rm kibana.tar.gz' do
-  only_if "test -e ~/kibana.tar.gz"
-end
-
-# kibana
-execute 'kibana.tar.gz' do
-  command "wget https://download.elastic.co/kibana/kibana/kibana-4.3.1-darwin-x64.tar.gz -O kibana.tar.gz"
+  cwd "#{node[:elasticsearch][:install_path]}"
 end
 
 execute 'file unzip' do
   command 'tar -zxf elasticsearch.tar.gz'
-end
-
-# kibana
-execute 'kinaba unzip' do
-  command 'tar -zxvf kibana.tar.gz'
+  cwd "#{node[:elasticsearch][:install_path]}"
 end
 
 execute 'rm -R elasticsearch' do
   only_if 'ls elasticsearch'
+  cwd "#{node[:elasticsearch][:install_path]}"
 end
 
 execute 'mv elasticsearch-* elasticsearch' do
-  not_if 'ls elasticsearch'
-end
-
-# kibana
-execute 'rm -R kibana' do
-  only_if 'ls kibana'
-end
-
-execute 'mv kibana-* kibana' do
-  not_if 'ls kibana'
+  not_if "ls #{node[:elasticsearch][:install_path]}elasticsearch"
+  cwd "#{node[:elasticsearch][:install_path]}"
 end
 
 execute 'chmod -R 777 elasticsearch' do
-  only_if 'ls elasticsearch'
-end
-
-# kibana
-execute 'chmod -R 777 kibana' do
-  only_if 'ls kibana'
+  only_if "ls #{node[:elasticsearch][:install_path]}elasticsearch"
+  cwd "#{node[:elasticsearch][:install_path]}"
 end
 
 execute 'mkdir elasticsearch/plugins' do
   not_if 'ls elasticsearch/plugins'
+  cwd "#{node[:elasticsearch][:install_path]}"
 end
 
 # プラグイン
 ## HEAD
 execute 'bin/plugin remove mobz/elasticsearch-head' do
   only_if 'cd elasticsearch/plugins/head'
-  cwd 'elasticsearch'
+  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
 end
 
 execute 'bin/plugin install mobz/elasticsearch-head' do
-  cwd 'elasticsearch'
+  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
 end
 
 ## kuromoji
 execute "bin/plugin remove analysis-kuromoji" do
   only_if 'cd elasticsearch/plugins/analysis-kuromoji'
-  cwd 'elasticsearch'
+  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
 end
 
 execute "bin/plugin install analysis-kuromoji" do
-  cwd 'elasticsearch'
+  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
 end
 
 # mavel
@@ -113,5 +91,5 @@ template "elasticsearch/config/elasticsearch.yml" do
 end
 
 execute "bin/elasticsearch -d &" do
-  cwd 'elasticsearch'
+  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
 end
