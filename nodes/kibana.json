@@ -1,0 +1,5 @@
+{
+  "kibana": {
+    "install_path": "/home/vagrant/"
+  }
+}

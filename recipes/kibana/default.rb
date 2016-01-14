@@ -14,3 +14,24 @@ execute 'kibana file get' do
 end
 
 # TODO: 追加予定
+execute 'file unzip' do
+  command 'tar -zxf kibana.tar.gz'
+  cwd "#{node[:kibana][:install_path]}"
+end
+
+execute 'rm -R kibana' do
+  only_if 'ls kibana'
+  cwd "#{node[:kibana][:install_path]}"
+end
+
+execute 'mv kibana-* elasticsearch' do
+  not_if "ls #{node[:kibana][:install_path]}kibana"
+  cwd "#{node[:kibana][:install_path]}"
+end
+
+execute 'chmod -R 777 kibana' do
+  only_if "ls #{node[:kibana][:install_path]}kibana"
+  cwd "#{node[:kibana][:install_path]}"
+end
+
+
