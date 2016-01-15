@@ -6,6 +6,7 @@ end
 
 execute 'rm elasticsearch.tar.gz' do
   only_if "test -e #{node[:elasticsearch][:install_path]}elaticsearch.tar.gz"
+  cwd "#{node[:elasticsearch][:install_path]}"
 end
 
 execute 'elasticsearch file get' do
@@ -13,13 +14,13 @@ execute 'elasticsearch file get' do
   cwd "#{node[:elasticsearch][:install_path]}"
 end
 
-execute 'file unzip' do
-  command 'tar -zxf elasticsearch.tar.gz'
+execute 'rm -R elasticsearch' do
+  only_if 'ls elasticsearch'
   cwd "#{node[:elasticsearch][:install_path]}"
 end
 
-execute 'rm -R elasticsearch' do
-  only_if 'ls elasticsearch'
+execute 'file unzip' do
+  command 'tar -zxf elasticsearch.tar.gz'
   cwd "#{node[:elasticsearch][:install_path]}"
 end
 
@@ -42,21 +43,21 @@ end
 ## HEAD
 execute 'bin/plugin remove mobz/elasticsearch-head' do
   only_if 'cd elasticsearch/plugins/head'
-  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
+  cwd "#{node[:elasticsearch][:install_path]}elasticsearch"
 end
 
 execute 'bin/plugin install mobz/elasticsearch-head' do
-  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
+  cwd "#{node[:elasticsearch][:install_path]}elasticsearch"
 end
 
 ## kuromoji
 execute "bin/plugin remove analysis-kuromoji" do
   only_if 'cd elasticsearch/plugins/analysis-kuromoji'
-  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
+  cwd "#{node[:elasticsearch][:install_path]}elasticsearch"
 end
 
 execute "bin/plugin install analysis-kuromoji" do
-  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
+  cwd "#{node[:elasticsearch][:install_path]}elasticsearch"
 end
 
 # mavel
@@ -91,5 +92,5 @@ template "elasticsearch/config/elasticsearch.yml" do
 end
 
 execute "bin/elasticsearch -d &" do
-  cwd "#{node[:elasticsearch][:install_path]}/elasticsearch"
+  cwd "#{node[:elasticsearch][:install_path]}elasticsearch"
 end
