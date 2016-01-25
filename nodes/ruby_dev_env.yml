@@ -1,4 +1,5 @@
 rbenv:
+  user: vagrant
   global:
     2.2.0
   versions:

@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+# fluentの設定
+gem 'fluent-plugin-elasticsearch'
+gem 'fluent-plugin-rewrite-tag-filter'
