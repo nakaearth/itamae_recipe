@@ -1,0 +1,21 @@
+rbenv:
+  global:
+    2.2.0
+  versions:
+    - 2.2.0
+    - 2.1.5
+
+  # rbenv install dir, optional (default: /usr/local/rbenv)
+  rbenv_root: "/usr/local/rbenv"
+
+  scheme: https
+
+rbenv-default-gems:
+  default-gems:
+    - bundler
+    - bcat ~>0.6
+    - rails ~>4.2
+
+# Specify :install or :revision to install rbenv-gem-rehash
+rbenv-gem-rehash:
+  install: true
