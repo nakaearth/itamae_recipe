@@ -36,7 +36,7 @@ end
 template "/usr/local/share/elasticsearch/config/elasticsearch.yml" do
   path "/usr/local/share/elasticsearch/config/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
   source "../../../templates/elasticsearch/config/elasticsearch_yml.erb" #必須指定。
-  variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
+  variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "1", index_replicas_num: "1"}) # 任意指定。
 end
 
 # プラグイン

@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "centOs65"
+  config.vm.box = "centOs7.0"
 
 #  config.vm.define :el1 do | el1 |
 #    el1.vm.network "private_network", ip: "192.168.25.20"
@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
    config.vm.define :el2 do | el2 |
     el2.vm.network "private_network", ip: "192.168.25.30"
   end
-  
+
 #  config.vm.define :el3 do | el3 |
 #    el3.vm.network "private_network", ip: "192.168.25.40"
 #  end
