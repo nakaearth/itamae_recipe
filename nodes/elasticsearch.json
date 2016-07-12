@@ -1,8 +1,8 @@
 {
   "elasticsearch": {
     "cluster_name": "nakamura-elasticsearch", 
-    "version": "1.7.3",
-    "index_shards_num": "5", 
+    "version": "1.7.5",
+    "index_shards_num": "1", 
     "index_replicas_num": "1", 
     "plugin": {
       "kuromoji": {

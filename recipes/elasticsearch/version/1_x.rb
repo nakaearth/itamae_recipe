@@ -24,7 +24,7 @@ execute 'sudo mv elasticsearch-* /usr/local/share/elasticsearch' do
   not_if 'ls /usr/local/share/elasticsearch'
 end
 
-execute 'sudo chmod -R 755 /usr/local/share/elasticsearch' do
+execute 'sudo chmod -R 777 /usr/local/share/elasticsearch' do
   only_if 'ls /usr/local/share/elasticsearch'
 end
 
