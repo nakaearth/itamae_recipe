@@ -24,6 +24,10 @@ execute 'sudo mv elasticsearch-* /usr/local/share/elasticsearch' do
   not_if 'ls /usr/local/share/elasticsearch'
 end
 
+execute 'mkdir /usr/local/share/elasticsearch/logs' do
+  not_if 'ls /usr/local/share/elasticsearch/logs'
+end
+
 execute 'sudo chmod -R 777 /usr/local/share/elasticsearch' do
   only_if 'ls /usr/local/share/elasticsearch'
 end
