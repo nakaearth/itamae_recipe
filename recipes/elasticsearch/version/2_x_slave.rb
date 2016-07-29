@@ -87,7 +87,7 @@ end
 # elasticsearch.yml
 template "elasticsearch/config/elasticsearch.yml" do
   path "elasticsearch/config/elasticsearch.yml" # 任意指定。ここに記載するとブロック引数より優先される。
-  source "../../../templates/elasticsearch/config/elasticsearch2_yml.erb" #必須指定。
+  source "../../../templates/elasticsearch/config/elasticsearch2_slave_yml.erb" #必須指定。
   variables({cluster_name: 'nakamura-elasticsearch', index_shards_num: "5", index_replicas_num: "1"}) # 任意指定。
 end
 

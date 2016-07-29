@@ -2,9 +2,9 @@
   "elasticsearch": {
     "install_path": "/home/vagrant/",
     "cluster_name": "nakamura-elasticsearch",
-    "version": "2.1.0",
-    "index_shards_num": "5",
+    "version": "2.3.0",
+    "index_shards_num": "4",
     "index_replicas_num": "1",
-    "network_host": "_eth1:ipv4_"
+    "network_host": "_enp0s8:ipv4_"
   }
 }

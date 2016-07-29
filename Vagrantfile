@@ -26,7 +26,7 @@ Vagrant.configure(2) do |config|
     el3.vm.network "private_network", ip: "192.168.25.40"
   end
 
-#  config.vm.define :el4 do | el4 |
-#    el4.vm.network "private_network", ip: "192.168.25.50"
-#  end
+  config.vm.define :el4 do | el4 |
+    el4.vm.network "private_network", ip: "192.168.25.50"
+  end
 end
