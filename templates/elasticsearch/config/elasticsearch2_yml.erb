@@ -41,6 +41,9 @@ cluster.name: <%= node['elasticsearch']['cluster_name'] %>
 #
 # path.logs: /path/to/logs
 #
+# backup
+path.repo: ["/var/elasticsearch/snapshot"]
+
 # ----------------------------------- Memory -----------------------------------
 #
 # Lock the memory on startup:
