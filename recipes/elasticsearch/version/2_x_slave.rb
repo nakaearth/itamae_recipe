@@ -39,6 +39,22 @@ execute 'mkdir elasticsearch/plugins' do
   cwd "#{node[:elasticsearch][:install_path]}"
 end
 
+# back up ディレクトリの作成
+execute 'mkdir /var/elasticsearch' do
+  not_if 'ls /var/elasticsearch'
+  cwd "#{node[:elasticsearch][:install_path]}"
+end
+
+execute 'chmod -R 777 /var/elasticsearch' do
+  only_if "ls /var/elasticsearch"
+  cwd "#{node[:elasticsearch][:install_path]}"
+end
+
+execute 'mkdir /var/elasticsearch/snapshot' do
+  not_if 'ls /var/elasticsearch/snapshot'
+  cwd "#{node[:elasticsearch][:install_path]}"
+end
+
 # プラグイン
 ## HEAD
 execute 'bin/plugin remove mobz/elasticsearch-head' do
