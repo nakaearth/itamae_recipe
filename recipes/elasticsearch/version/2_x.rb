@@ -55,6 +55,12 @@ execute 'mkdir /var/elasticsearch/snapshot' do
   cwd "#{node[:elasticsearch][:install_path]}"
 end
 
+execute 'chmod -R 777 elasticsearch/plugins' do
+  only_if "ls #{node[:elasticsearch][:install_path]}elasticsearch/plugins"
+  cwd "#{node[:elasticsearch][:install_path]}"
+end
+
+
 # プラグイン
 ## HEAD
 execute 'bin/plugin remove mobz/elasticsearch-head' do

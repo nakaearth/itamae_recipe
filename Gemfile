@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#gem 'itamae', '~> 1.5'
+# gem 'itamae', '1.6'
 gem 'itamae'
 
 # Vagrant依存ファイル
