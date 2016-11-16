@@ -82,6 +82,17 @@ execute "bin/plugin install analysis-kuromoji" do
   cwd "#{node[:elasticsearch][:install_path]}elasticsearch"
 end
 
+## icu
+execute "bin/plugin remove analysis-icu" do
+  only_if 'cd elasticsearch/plugins/analysis-icu'
+  cwd "#{node[:elasticsearch][:install_path]}elasticsearch"
+end
+
+execute "bin/plugin install analysis-icu" do
+  cwd "#{node[:elasticsearch][:install_path]}elasticsearch"
+end
+
+
 # mavel
 # execute "bin/plugin remove license" do
 #  only_if 'cd elasticsearch/plugins/license'
